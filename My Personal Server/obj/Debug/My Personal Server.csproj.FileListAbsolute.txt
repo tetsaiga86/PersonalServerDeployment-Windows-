@@ -1,0 +1,9 @@
+c:\users\kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\My Personal Server.exe.config
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\My Personal Server.exe
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\My Personal Server.pdb
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My_Personal_Server.Form1.resources
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My_Personal_Server.Properties.Resources.resources
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csproj.GenerateResource.Cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.exe
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.pdb
