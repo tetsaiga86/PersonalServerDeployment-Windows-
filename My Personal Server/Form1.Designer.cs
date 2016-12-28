@@ -32,24 +32,24 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rootTextBox = new System.Windows.Forms.TextBox();
+            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.applyButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.folderButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.portTextBox = new System.Windows.Forms.TextBox();
-            this.rootTextBox = new System.Windows.Forms.TextBox();
             this.startCheckBox = new System.Windows.Forms.CheckBox();
             this.minimizeCheckBox = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -96,33 +96,35 @@
             // 
             // flowLayoutPanel6
             // 
-            this.flowLayoutPanel6.Controls.Add(this.button6);
-            this.flowLayoutPanel6.Controls.Add(this.button7);
+            this.flowLayoutPanel6.Controls.Add(this.stopButton);
+            this.flowLayoutPanel6.Controls.Add(this.startButton);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(224, 266);
             this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
             this.flowLayoutPanel6.Size = new System.Drawing.Size(337, 65);
             this.flowLayoutPanel6.TabIndex = 5;
             // 
-            // button6
+            // stopButton
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(3, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(162, 60);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Stop";
-            this.button6.UseVisualStyleBackColor = true;
+            this.stopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopButton.Location = new System.Drawing.Point(3, 3);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(162, 60);
+            this.stopButton.TabIndex = 5;
+            this.stopButton.Text = "Stop";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
-            // button7
+            // startButton
             // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(171, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(162, 60);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Start";
-            this.button7.UseVisualStyleBackColor = true;
+            this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startButton.Location = new System.Drawing.Point(171, 3);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(162, 60);
+            this.startButton.TabIndex = 6;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -172,34 +174,59 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(409, 257);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
+            // rootTextBox
+            // 
+            this.rootTextBox.Location = new System.Drawing.Point(3, 3);
+            this.rootTextBox.Name = "rootTextBox";
+            this.rootTextBox.Size = new System.Drawing.Size(406, 26);
+            this.rootTextBox.TabIndex = 0;
+            // 
+            // portTextBox
+            // 
+            this.portTextBox.Location = new System.Drawing.Point(3, 35);
+            this.portTextBox.Name = "portTextBox";
+            this.portTextBox.Size = new System.Drawing.Size(406, 26);
+            this.portTextBox.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 67);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(406, 190);
+            this.textBox1.TabIndex = 9;
+            // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Controls.Add(this.button4);
-            this.flowLayoutPanel4.Controls.Add(this.button5);
+            this.flowLayoutPanel4.Controls.Add(this.cancelButton);
+            this.flowLayoutPanel4.Controls.Add(this.applyButton);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(612, 266);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(239, 65);
             this.flowLayoutPanel4.TabIndex = 3;
             // 
-            // button4
+            // cancelButton
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 60);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Cancel";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.Location = new System.Drawing.Point(3, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(113, 60);
+            this.cancelButton.TabIndex = 7;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // applyButton
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(122, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(113, 60);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Apply";
-            this.button5.UseVisualStyleBackColor = true;
+            this.applyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.applyButton.Location = new System.Drawing.Point(122, 3);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(113, 60);
+            this.applyButton.TabIndex = 8;
+            this.applyButton.Text = "Apply";
+            this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // flowLayoutPanel3
             // 
@@ -215,7 +242,7 @@
             this.folderButton.Location = new System.Drawing.Point(3, 3);
             this.folderButton.Name = "folderButton";
             this.folderButton.Size = new System.Drawing.Size(113, 26);
-            this.folderButton.TabIndex = 3;
+            this.folderButton.TabIndex = 2;
             this.folderButton.Text = "...";
             this.folderButton.UseVisualStyleBackColor = true;
             this.folderButton.Click += new System.EventHandler(this.folderButton_Click);
@@ -229,20 +256,6 @@
             this.flowLayoutPanel5.Size = new System.Drawing.Size(188, 65);
             this.flowLayoutPanel5.TabIndex = 4;
             // 
-            // portTextBox
-            // 
-            this.portTextBox.Location = new System.Drawing.Point(3, 35);
-            this.portTextBox.Name = "portTextBox";
-            this.portTextBox.Size = new System.Drawing.Size(406, 26);
-            this.portTextBox.TabIndex = 0;
-            // 
-            // rootTextBox
-            // 
-            this.rootTextBox.Location = new System.Drawing.Point(3, 3);
-            this.rootTextBox.Name = "rootTextBox";
-            this.rootTextBox.Size = new System.Drawing.Size(406, 26);
-            this.rootTextBox.TabIndex = 1;
-            // 
             // startCheckBox
             // 
             this.startCheckBox.Checked = true;
@@ -250,7 +263,7 @@
             this.startCheckBox.Location = new System.Drawing.Point(3, 3);
             this.startCheckBox.Name = "startCheckBox";
             this.startCheckBox.Size = new System.Drawing.Size(255, 24);
-            this.startCheckBox.TabIndex = 0;
+            this.startCheckBox.TabIndex = 3;
             this.startCheckBox.Text = "Start with Windows";
             this.startCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -261,19 +274,9 @@
             this.minimizeCheckBox.Location = new System.Drawing.Point(3, 33);
             this.minimizeCheckBox.Name = "minimizeCheckBox";
             this.minimizeCheckBox.Size = new System.Drawing.Size(255, 24);
-            this.minimizeCheckBox.TabIndex = 1;
+            this.minimizeCheckBox.TabIndex = 4;
             this.minimizeCheckBox.Text = "Close minimizes to tray";
             this.minimizeCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 67);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(406, 190);
-            this.textBox1.TabIndex = 2;
             // 
             // Form1
             // 
@@ -311,11 +314,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button folderButton;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button applyButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
