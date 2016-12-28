@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,14 @@ namespace My_Personal_Server
         public Form1()
         {
             InitializeComponent();
+            //deletePreviousLog();
             load();
+            FileSystemWatcher fileWatcher = new FileSystemWatcher();
+            fileWatcher.NotifyFilter = NotifyFilters.LastWrite;
+            fileWatcher.Path = "./";
+            fileWatcher.Filter = "server.log";
+            fileWatcher.Changed += new FileSystemEventHandler(readLogFile);
+            fileWatcher.EnableRaisingEvents = true;
         }
 
         private void load()
@@ -56,15 +64,46 @@ namespace My_Personal_Server
             psi.CreateNoWindow = true;     // This is what hides the command window.
             psi.FileName = @"C:\Program Files\nodejs\node.exe";
             psi.Arguments = @"./serverApi/index.js";   // Probably you will pass the port number here
-            if (start)
+            try
             {
-                mProcess = System.Diagnostics.Process.Start(psi);
+                if (start)
+                {
+                    mProcess = System.Diagnostics.Process.Start(psi);
+                }
+                else
+                {
+                    mProcess.Kill();
+
+                }
             }
-            else
+            catch (Exception err)
             {
-                mProcess.Kill();
-                
+                Console.Write(err);
             }
+        }
+
+        private void deletePreviousLog()
+        {
+            File.Delete("./server.log");
+        }
+
+        private void readLogFile(object source, FileSystemEventArgs e)
+        {
+            int counter = 0;
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file = new System.IO.StreamReader("./server.log");
+            while ((line = file.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+                counter++;
+            }
+
+            file.Close();
+
+            // Suspend the screen.
+            Console.ReadLine();
         }
 
         private void applyButton_Click(object sender, EventArgs e)
