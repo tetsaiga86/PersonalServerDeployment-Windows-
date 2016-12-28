@@ -69,5 +69,17 @@ namespace My_Personal_Server.Properties {
                 this["close_checBox"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool clear_logs_checBox {
+            get {
+                return ((bool)(this["clear_logs_checBox"]));
+            }
+            set {
+                this["clear_logs_checBox"] = value;
+            }
+        }
     }
 }

@@ -17,10 +17,9 @@ namespace My_Personal_Server
         public Form1()
         {
             InitializeComponent();
-            //deletePreviousLog();
             load();
             FileSystemWatcher fileWatcher = new FileSystemWatcher();
-            fileWatcher.NotifyFilter = NotifyFilters.LastWrite;
+            fileWatcher.NotifyFilter = NotifyFilters.Size;
             fileWatcher.Path = "./";
             fileWatcher.Filter = "server.log";
             fileWatcher.Changed += new FileSystemEventHandler(readLogFile);
@@ -29,19 +28,11 @@ namespace My_Personal_Server
 
         private void load()
         {
-            try
+            setFields();
+            if (clearLogsCheckBox.Checked)
             {
-                rootTextBox.Text = Properties.Settings.Default.root;
-                portTextBox.Text = Properties.Settings.Default.port.ToString();
-                startCheckBox.Checked = Properties.Settings.Default.start_checkBox;
-                minimizeCheckBox.Checked = Properties.Settings.Default.close_checBox;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "Could not retrieve settings");
-            }
-            
-            
+                deletePreviousLog();
+            } 
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
@@ -60,20 +51,21 @@ namespace My_Personal_Server
         private void startStopServer(Boolean start)
         {
             System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
-            psi.UseShellExecute = false;   // This is important
-            psi.CreateNoWindow = true;     // This is what hides the command window.
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
             psi.FileName = @"C:\Program Files\nodejs\node.exe";
-            psi.Arguments = @"./serverApi/index.js";   // Probably you will pass the port number here
+            psi.Arguments = @"./serverApi/index.js";
             try
             {
                 if (start)
                 {
                     mProcess = System.Diagnostics.Process.Start(psi);
+                    switchBtns();
                 }
                 else
                 {
                     mProcess.Kill();
-
+                    switchBtns();
                 }
             }
             catch (Exception err)
@@ -82,28 +74,63 @@ namespace My_Personal_Server
             }
         }
 
+        private void switchBtns()
+        {
+            if (startButton.Enabled)
+            {
+                startButton.Enabled = false;
+                stopButton.Enabled = true;
+            }
+            else
+            {
+                startButton.Enabled = true;
+                stopButton.Enabled = false;
+            }
+        }
+
         private void deletePreviousLog()
         {
-            File.Delete("./server.log");
+            string path = "./server.log";
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+
+                File.Create(path);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+ 
         }
 
         private void readLogFile(object source, FileSystemEventArgs e)
         {
-            int counter = 0;
-            string line;
-
-            // Read the file and display it line by line.
-            System.IO.StreamReader file = new System.IO.StreamReader("./server.log");
-            while ((line = file.ReadLine()) != null)
+            try
             {
-                Console.WriteLine(line);
-                counter++;
+                int counter = 0;
+                string line;
+
+                // Read the file and display it line by line.
+                System.IO.StreamReader file = new System.IO.StreamReader("./server.log");
+                while ((line = file.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                    counter++;
+                }
+
+                file.Close();
+
+                // Suspend the screen.
+                Console.ReadLine();
             }
-
-            file.Close();
-
-            // Suspend the screen.
-            Console.ReadLine();
+            catch (Exception err)
+            {
+                Console.Write(err);
+            }
         }
 
         private void applyButton_Click(object sender, EventArgs e)
@@ -114,6 +141,7 @@ namespace My_Personal_Server
                 Properties.Settings.Default.port = Int32.Parse(portTextBox.Text);
                 Properties.Settings.Default.start_checkBox = startCheckBox.Checked;
                 Properties.Settings.Default.close_checBox = minimizeCheckBox.Checked;
+                Properties.Settings.Default.clear_logs_checBox = clearLogsCheckBox.Checked;
                 Properties.Settings.Default.Save();
             }
             catch (Exception a)
@@ -131,6 +159,32 @@ namespace My_Personal_Server
         private void stopButton_Click(object sender, EventArgs e)
         {
             startStopServer(false);
+        }
+
+        private void clearLogBtn_Click(object sender, EventArgs e)
+        {
+            deletePreviousLog();
+        }
+
+        private void setFields() {
+            try
+            {
+                rootTextBox.Text = Properties.Settings.Default.root;
+                portTextBox.Text = Properties.Settings.Default.port.ToString();
+                startCheckBox.Checked = Properties.Settings.Default.start_checkBox;
+                minimizeCheckBox.Checked = Properties.Settings.Default.close_checBox;
+                clearLogsCheckBox.Checked = Properties.Settings.Default.clear_logs_checBox;
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Could not retrieve settings");
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            setFields();
         }
     }
 }

@@ -50,6 +50,8 @@
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.startCheckBox = new System.Windows.Forms.CheckBox();
             this.minimizeCheckBox = new System.Windows.Forms.CheckBox();
+            this.clearLogBtn = new System.Windows.Forms.Button();
+            this.clearLogsCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -106,6 +108,7 @@
             // 
             // stopButton
             // 
+            this.stopButton.Enabled = false;
             this.stopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopButton.Location = new System.Drawing.Point(3, 3);
             this.stopButton.Name = "stopButton";
@@ -131,6 +134,7 @@
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.label4);
             this.flowLayoutPanel1.Controls.Add(this.label5);
+            this.flowLayoutPanel1.Controls.Add(this.clearLogsCheckBox);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(188, 257);
@@ -216,6 +220,7 @@
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // applyButton
             // 
@@ -231,6 +236,7 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.folderButton);
+            this.flowLayoutPanel3.Controls.Add(this.clearLogBtn);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(672, 3);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(63, 3, 3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -262,7 +268,7 @@
             this.startCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.startCheckBox.Location = new System.Drawing.Point(3, 3);
             this.startCheckBox.Name = "startCheckBox";
-            this.startCheckBox.Size = new System.Drawing.Size(255, 24);
+            this.startCheckBox.Size = new System.Drawing.Size(183, 24);
             this.startCheckBox.TabIndex = 3;
             this.startCheckBox.Text = "Start with Windows";
             this.startCheckBox.UseVisualStyleBackColor = true;
@@ -273,10 +279,33 @@
             this.minimizeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.minimizeCheckBox.Location = new System.Drawing.Point(3, 33);
             this.minimizeCheckBox.Name = "minimizeCheckBox";
-            this.minimizeCheckBox.Size = new System.Drawing.Size(255, 24);
+            this.minimizeCheckBox.Size = new System.Drawing.Size(196, 24);
             this.minimizeCheckBox.TabIndex = 4;
             this.minimizeCheckBox.Text = "Close minimizes to tray";
             this.minimizeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // clearLogBtn
+            // 
+            this.clearLogBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.clearLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearLogBtn.Location = new System.Drawing.Point(3, 182);
+            this.clearLogBtn.Margin = new System.Windows.Forms.Padding(3, 150, 3, 3);
+            this.clearLogBtn.Name = "clearLogBtn";
+            this.clearLogBtn.Size = new System.Drawing.Size(113, 74);
+            this.clearLogBtn.TabIndex = 3;
+            this.clearLogBtn.Text = "Clear Logs";
+            this.clearLogBtn.UseVisualStyleBackColor = true;
+            this.clearLogBtn.Click += new System.EventHandler(this.clearLogBtn_Click);
+            // 
+            // clearLogsCheckBox
+            // 
+            this.clearLogsCheckBox.Location = new System.Drawing.Point(3, 235);
+            this.clearLogsCheckBox.Margin = new System.Windows.Forms.Padding(3, 135, 3, 3);
+            this.clearLogsCheckBox.Name = "clearLogsCheckBox";
+            this.clearLogsCheckBox.Size = new System.Drawing.Size(183, 24);
+            this.clearLogsCheckBox.TabIndex = 5;
+            this.clearLogsCheckBox.Text = "Clear logs on restart";
+            this.clearLogsCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -329,6 +358,8 @@
         private System.Windows.Forms.CheckBox startCheckBox;
         private System.Windows.Forms.CheckBox minimizeCheckBox;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox clearLogsCheckBox;
+        private System.Windows.Forms.Button clearLogBtn;
     }
 }
 
