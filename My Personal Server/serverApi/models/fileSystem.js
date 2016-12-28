@@ -3,6 +3,7 @@ const root = 'C:/Users/Kyle/Music/';
 var PromiseEs6 = require('es6-promise').Promise;
 var zipFolder = require('zip-folder');
 var tempfile = require('tempfile');
+const log = require('simple-node-logger').createSimpleFileLogger('server.log');
 
 function _sanitizedPath(path){
   var splitPath = path.split('/');
@@ -75,7 +76,8 @@ var fileSystem = {
     var zipPath = tempfile('.zip');
     return new PromiseEs6(function(resolve, reject) {
       zipFolder (folderPath, zipPath, function(err) {
-        if(err) {
+          if (err) {
+              log.info('oh no! ', err, new Date().toJSON());
           console.log('oh no!', err);
           reject(err);
         } else {
@@ -84,6 +86,7 @@ var fileSystem = {
             fileSystem.remove(zipPath);
           });
           resolve(stream);
+          log.info(folderPath + ' has been zipped!', new Date().toJSON());
           console.log(folderPath + ' has been zipped!');
         }
       });
@@ -97,7 +100,11 @@ var fileSystem = {
       throw `Destination not writable: ${destination}`;
     }
     fs.rename(newFile.path, destination, function(err){
-      if(err) return console.log(err + '');
+        if (err) {
+            log.info(err + ' ', new Date().toJSON());
+            return console.log(err + '');
+        }
+        log.info(newFile.path + ' will be moved to ' + root + dir + ' ', new Date().toJSON());
       console.log(newFile.path + ' will be moved to ' + root + dir);
     });
   },
@@ -157,12 +164,14 @@ var fileSystem = {
         stats = decorateFile(path);
         if (!stats.isDir) {
           fs.unlink(path, function (e){
-            if (e) return console.error(e);
+              if (e) return console.error(e);
+              log.info('the file at ' + path + ' has been deleted' + ' ', new Date().toJSON());
             return console.log('the file at ' + path + ' has been deleted');
           });
         }else if (stats.childCount < 1) {
           fs.rmdir(path, function (e){
-            if (e) return console.error(e);
+              if (e) return console.error(e);
+              log.info('the empty folder at ' + path + ' has been deleted' + ' ', new Date().toJSON());
             return console.log('the empty folder at ' + path + ' has been deleted');
           });
         }else{
@@ -170,11 +179,13 @@ var fileSystem = {
             rmdirRecursive(path, function (e) {
               if (e) return console.error(e);
             });
+            log.info('the folder ' + path + ' and all inner files have been deleted' + ' ', new Date().toJSON());
             return console.log('the folder ' + path + ' and all inner files have been deleted');
 
           }
         }
-      }catch(err){
+      } catch (err) {
+          log.info(err.stack + ' ', new Date().toJSON());
         console.log(err.stack);
       }
     });
