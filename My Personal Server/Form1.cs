@@ -21,5 +21,13 @@ namespace My_Personal_Server
         {
 
         }
+
+        private void folderButton_Click(object sender, EventArgs e)
+        {
+            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                rootTextBox.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
     }
 }
