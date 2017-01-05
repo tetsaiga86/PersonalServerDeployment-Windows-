@@ -1,7 +1,7 @@
 var express = require('express');
+const log = require('simple-node-logger').createSimpleFileLogger('server.log');
 var apiRouter = require('./routers/apiRouter');
 const formidable = require('express-formidable');
-const log = require('simple-node-logger').createSimpleFileLogger('server.log');
 var app = express();
 var port = 3000;
 

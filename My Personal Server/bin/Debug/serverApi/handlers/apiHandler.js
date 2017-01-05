@@ -19,7 +19,8 @@ var apiHandler = {
   },
 
   handleDownload: function(req, res){
-    console.log('req.params.path= ' + req.params.path);
+      console.log('req.params.path= ' + req.params.path);
+      log.info('req.params.path= ' + req.params.path + ' ', new Date().toJSON());
     var path = fileSystem.sanitizedPath(req.params.path);
     var info = {};
     var reqUrl = url.parse(req.url, true);

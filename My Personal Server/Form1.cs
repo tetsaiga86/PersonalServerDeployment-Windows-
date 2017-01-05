@@ -13,14 +13,15 @@ namespace My_Personal_Server
 {
     public partial class Form1 : Form
     {
+        long counter;
         System.Diagnostics.Process mProcess;
         public Form1()
         {
             InitializeComponent();
             load();
+            counter = 0;
             FileSystemWatcher fileWatcher = new FileSystemWatcher();
-            fileWatcher.NotifyFilter = NotifyFilters.Size | NotifyFilters.LastAccess | NotifyFilters.LastWrite
-           | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+            fileWatcher.NotifyFilter = NotifyFilters.Size;
             fileWatcher.Path = "./";
             fileWatcher.Filter = "server.log";
             fileWatcher.Changed += new FileSystemEventHandler(readLogFile);
@@ -61,6 +62,7 @@ namespace My_Personal_Server
                 if (start)
                 {
                     mProcess = System.Diagnostics.Process.Start(psi);
+                    //Console.Write(mProcess.BeginOutputReadLine());
                     switchBtns();
                 }
                 else
@@ -110,22 +112,29 @@ namespace My_Personal_Server
 
         private void readLogFile(object source, FileSystemEventArgs e)
         {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)delegate { readLogFile(source, e); });
+                return;
+            }
             try
             {
-                int counter = 0;
                 string line;
 
                 // Read the file and display it line by line.
-                System.IO.StreamReader file = new System.IO.StreamReader("./server.log");
-                while ((line = file.ReadLine()) != null)
+                System.IO.FileStream file = File.Open("./server.log", 
+                    FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                file.Seek(counter, SeekOrigin.Begin);
+                StreamReader reader = new StreamReader(file);
+                while ((line = reader.ReadLine()) != null)
                 {
+                    
+                    logTextBox.AppendText(line + "\n");
                     Console.WriteLine(line);
-                    counter++;
                 }
+                counter = file.Position;
+                reader.Close();
                 file.Close();
-
-                // Suspend the screen.
-                logTextBox.Text = Console.ReadLine();
             }
             catch (Exception err)
             {
@@ -163,7 +172,7 @@ namespace My_Personal_Server
 
         private void clearLogBtn_Click(object sender, EventArgs e)
         {
-            deletePreviousLog();
+            logTextBox.Text = "";
         }
 
         private void setFields() {
