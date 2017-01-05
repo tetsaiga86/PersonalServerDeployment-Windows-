@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IWshRuntimeLibrary;
 
 namespace My_Personal_Server
 {
@@ -63,11 +64,13 @@ namespace My_Personal_Server
                 if (start)
                 {
                     mProcess = System.Diagnostics.Process.Start(psi);
+                    notifyIcon.BalloonTipText = "Server running on port: " + portTextBox.Text;
                     switchBtns();
                 }
                 else
                 {
                     mProcess.Kill();
+                    notifyIcon.BalloonTipText = "Server stopped";
                     switchBtns();
                 }
             }
@@ -96,9 +99,9 @@ namespace My_Personal_Server
             string path = "./server.log";
             try
             {
-                if (File.Exists(path))
+                if (System.IO.File.Exists(path))
                 {
-                    File.Delete(path);
+                    System.IO.File.Delete(path);
                 }
 
                 //File.Create(path);
@@ -119,14 +122,14 @@ namespace My_Personal_Server
             }
             try
             {
-                if (!File.Exists("./server.log"))
+                if (!System.IO.File.Exists("./server.log"))
                 {
                     return;
                 }
                 string line;
 
                 // Read the file and display it line by line.
-                System.IO.FileStream file = File.Open("./server.log", 
+                System.IO.FileStream file = System.IO.File.Open("./server.log", 
                     FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 file.Seek(counter, SeekOrigin.Begin);
                 StreamReader reader = new StreamReader(file);
@@ -161,6 +164,32 @@ namespace My_Personal_Server
             {
                 MessageBox.Show(a.ToString(), "Invalid input");
                 
+            }
+            startWithWindows(startCheckBox.Checked);
+        }
+
+        private void startWithWindows(Boolean launch)
+        {
+            String file = Environment.GetFolderPath(Environment.SpecialFolder.Startup)
+                    + "/My Personal Server.exe - Shortcut.lnk";
+            if (launch)
+            {
+                if (!System.IO.File.Exists(file))
+                {
+                    var shell = new WshShell();
+                    var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(file);
+                    windowsApplicationShortcut.Description = "App for node server";
+                    windowsApplicationShortcut.WorkingDirectory = Application.StartupPath;
+                    windowsApplicationShortcut.TargetPath = Application.ExecutablePath;
+                    windowsApplicationShortcut.Save();
+                }
+            }
+            else
+            {
+                if (System.IO.File.Exists(file))
+                {
+                    System.IO.File.Delete(file);
+                }
             }
         }
 
@@ -198,6 +227,42 @@ namespace My_Personal_Server
         private void cancelButton_Click(object sender, EventArgs e)
         {
             setFields();
+        }
+
+        private void startCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            startWithWindows(startCheckBox.Checked);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (minimizeCheckBox.Checked)
+            {
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    notifyIcon.Visible = true;
+                    this.Hide();
+                    e.Cancel = true;
+                }
+            }
+            
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(5000);
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon.Visible = false;
         }
     }
 }

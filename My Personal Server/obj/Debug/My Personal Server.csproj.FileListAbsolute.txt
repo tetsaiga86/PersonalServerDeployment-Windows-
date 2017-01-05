@@ -13,3 +13,5 @@ C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Person
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\routers\apiRouter.js
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\package.json
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\logger\logger.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csproj.ResolveComReference.cache
