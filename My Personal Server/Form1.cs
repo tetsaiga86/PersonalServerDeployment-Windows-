@@ -19,7 +19,8 @@ namespace My_Personal_Server
             InitializeComponent();
             load();
             FileSystemWatcher fileWatcher = new FileSystemWatcher();
-            fileWatcher.NotifyFilter = NotifyFilters.Size;
+            fileWatcher.NotifyFilter = NotifyFilters.Size | NotifyFilters.LastAccess | NotifyFilters.LastWrite
+           | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             fileWatcher.Path = "./";
             fileWatcher.Filter = "server.log";
             fileWatcher.Changed += new FileSystemEventHandler(readLogFile);
@@ -121,11 +122,10 @@ namespace My_Personal_Server
                     Console.WriteLine(line);
                     counter++;
                 }
-
                 file.Close();
 
                 // Suspend the screen.
-                Console.ReadLine();
+                logTextBox.Text = Console.ReadLine();
             }
             catch (Exception err)
             {

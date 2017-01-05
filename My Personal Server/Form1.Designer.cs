@@ -41,7 +41,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.rootTextBox = new System.Windows.Forms.TextBox();
             this.portTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.logTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.cancelButton = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
@@ -172,7 +172,7 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.rootTextBox);
             this.flowLayoutPanel2.Controls.Add(this.portTextBox);
-            this.flowLayoutPanel2.Controls.Add(this.textBox1);
+            this.flowLayoutPanel2.Controls.Add(this.logTextBox);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(197, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(409, 257);
@@ -192,15 +192,15 @@
             this.portTextBox.Size = new System.Drawing.Size(406, 26);
             this.portTextBox.TabIndex = 1;
             // 
-            // textBox1
+            // logTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 67);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(406, 190);
-            this.textBox1.TabIndex = 9;
+            this.logTextBox.Location = new System.Drawing.Point(3, 67);
+            this.logTextBox.Multiline = true;
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.logTextBox.Size = new System.Drawing.Size(406, 190);
+            this.logTextBox.TabIndex = 9;
             // 
             // flowLayoutPanel4
             // 
@@ -357,7 +357,7 @@
         private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.CheckBox startCheckBox;
         private System.Windows.Forms.CheckBox minimizeCheckBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.CheckBox clearLogsCheckBox;
         private System.Windows.Forms.Button clearLogBtn;
     }
