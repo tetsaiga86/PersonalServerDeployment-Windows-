@@ -1,6 +1,6 @@
 const fileSystem = require('../models/fileSystem');
 const formidable = require('express-formidable');
-const log = require('simple-node-logger').createSimpleFileLogger('server.log');
+const log = require('../logger/logger');
 var url = require('url');
 
 var isNumber = function (n) {
@@ -20,7 +20,7 @@ var apiHandler = {
 
   handleDownload: function(req, res){
       console.log('req.params.path= ' + req.params.path);
-      log.info('req.params.path= ' + req.params.path + ' ', new Date().toJSON());
+      //log.info('req.params.path= ' + req.params.path + ' ', new Date().toJSON());
     var path = fileSystem.sanitizedPath(req.params.path);
     var info = {};
     var reqUrl = url.parse(req.url, true);

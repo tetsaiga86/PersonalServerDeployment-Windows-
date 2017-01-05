@@ -1,9 +1,10 @@
 var express = require('express');
-const log = require('simple-node-logger').createSimpleFileLogger('server.log');
+const log = require('./logger/logger');
 var apiRouter = require('./routers/apiRouter');
 const formidable = require('express-formidable');
 var app = express();
-var port = 3000;
+var port = parseInt(process.argv[2]);
+
 
 app.use(formidable());
 
@@ -14,6 +15,6 @@ app.get('/', function (req, res) {
 app.use('/api', apiRouter);
 
 app.listen(port, function () {
-    log.info('The server is running on port ' + port + ' ', new Date().toJSON());
-  console.log('Example app listening on port 3000!');
+    log.info('The server is running on port ' + port);
+  console.log('Example app listening on port ' + port);
 });

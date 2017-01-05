@@ -12,3 +12,4 @@ C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Person
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\models\fileSystem.js
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\routers\apiRouter.js
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\package.json
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\logger\logger.js

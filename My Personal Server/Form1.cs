@@ -18,8 +18,8 @@ namespace My_Personal_Server
         public Form1()
         {
             InitializeComponent();
-            load();
             counter = 0;
+            load();
             FileSystemWatcher fileWatcher = new FileSystemWatcher();
             fileWatcher.NotifyFilter = NotifyFilters.Size;
             fileWatcher.Path = "./";
@@ -34,7 +34,8 @@ namespace My_Personal_Server
             if (clearLogsCheckBox.Checked)
             {
                 deletePreviousLog();
-            } 
+            }
+            readLogFile(null, null);
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
@@ -56,13 +57,12 @@ namespace My_Personal_Server
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
             psi.FileName = @"C:\Program Files\nodejs\node.exe";
-            psi.Arguments = @"./serverApi/index.js";
+            psi.Arguments = @"./serverApi/index.js " + portTextBox.Text + " " + rootTextBox.Text.Replace('\\','/');
             try
             {
                 if (start)
                 {
                     mProcess = System.Diagnostics.Process.Start(psi);
-                    //Console.Write(mProcess.BeginOutputReadLine());
                     switchBtns();
                 }
                 else
@@ -101,7 +101,7 @@ namespace My_Personal_Server
                     File.Delete(path);
                 }
 
-                File.Create(path);
+                //File.Create(path);
             }
             catch (Exception ex)
             {
@@ -119,6 +119,10 @@ namespace My_Personal_Server
             }
             try
             {
+                if (!File.Exists("./server.log"))
+                {
+                    return;
+                }
                 string line;
 
                 // Read the file and display it line by line.

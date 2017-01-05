@@ -1,6 +1,6 @@
 const fileSystem = require('../models/fileSystem');
 const formidable = require('express-formidable');
-const log = require('simple-node-logger').createSimpleFileLogger('server.log');
+const log = require('../logger/logger');
 var url = require('url');
 
 var isNumber = function (n) {

@@ -1,9 +1,9 @@
 const fs = require('fs');
-const root = 'C:/Users/Kyle/Music/';
+const root = process.argv[3]+"/";
 var PromiseEs6 = require('es6-promise').Promise;
 var zipFolder = require('zip-folder');
 var tempfile = require('tempfile');
-const log = require('simple-node-logger').createSimpleFileLogger('server.log');
+const log = require('../logger/logger');
 
 function _sanitizedPath(path){
   var splitPath = path.split('/');
