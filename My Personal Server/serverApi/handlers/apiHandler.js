@@ -13,14 +13,15 @@ var apiHandler = {
     fileSystem.getChildList(path).then(function(children){
       res.json(children);
     })
-    .catch(function(error){
+    .catch(function (error) {
+        log.info(error);
       console.error(error);
     });
   },
 
   handleDownload: function(req, res){
       console.log('req.params.path= ' + req.params.path);
-      //log.info('req.params.path= ' + req.params.path + ' ', new Date().toJSON());
+      
     var path = fileSystem.sanitizedPath(req.params.path);
     var info = {};
     var reqUrl = url.parse(req.url, true);
@@ -44,10 +45,12 @@ var apiHandler = {
       // console.log(info.start, info.end, path);
       // res.write(file, 'binary');
       // res.end();
-      if(info.end === fileSize - 1 && info.start === 0){
+      if (info.end === fileSize - 1 && info.start === 0) {
+        log.info('download ' + req.params.path);
         res.setHeader('Content-Length', info.end - info.start + 1);
         res.writeHead(200);
-      }else{
+      } else {
+          log.info('chunk ' + req.params.path, info.start + '-' + info.end);
         res.setHeader('Content-Range', 'bytes ' + info.start + '-' + info.end + '/' + fileSize);
         res.writeHead(206);
       }
@@ -73,20 +76,13 @@ var apiHandler = {
 
   handleZip: function(req, res){
     var path = fileSystem.sanitizedPath(req.params.path);
-    // var newPath = fileSystem.sanitizedPath(req.params.newPath);
     try{
-      // var promise = fileSystem.zip(...);
-      // promise.then(function(){});
-      // promise.catch(function(){});
       fileSystem.zip(path)
         .then(function(value) {
           res.setHeader('Content-Disposition', 'inline; filename=' + path + '.zip');
           res.writeHead(200);
 
           value.pipe(res);
-          // res.writeHead(202);
-          // res.end('try completed for:\n the file ' + path + ' has been renamed to ' + newPath);
-          // TODO : do stuff with success value
         })
         .catch(function(value) {
           res.writeHead(500);
@@ -106,6 +102,7 @@ var apiHandler = {
     try{
       fileSystem.rename(path, newPath);
       res.writeHead(202);
+      log.info('the file ' + path + ' has been renamed to ' + newPath);
       res.end('try completed for:\n the file ' + path + ' has been renamed to ' + newPath);
     }catch(e){
       res.writeHead(500);
@@ -119,6 +116,7 @@ var apiHandler = {
     try{
       fileSystem.uploadFile(path, newFile);
       res.writeHead(202);
+      log.info('uploaded ' + path);
       res.end('try completed for:\n upload file ' + path);
     }catch(e){
       res.writeHead(500);
@@ -131,6 +129,7 @@ var apiHandler = {
     try{
       fileSystem.remove(path);
       res.writeHead(202);
+      log.info(path + ' deleted');
       res.end('try completed for:\n folder ' + path + ' deleted');
     }catch(e){
       res.writeHead(500);
@@ -143,6 +142,7 @@ var apiHandler = {
     try{
       fileSystem.mkDir(path);
       res.writeHead(201);
+      log.info(path + ' folder created')
       res.end('try completed for:\n ' + path + ' folder created');
     }catch(error){
       res.writeHead(500);

@@ -15,3 +15,5 @@ C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Person
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\logger\logger.js
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\Interop.IWshRuntimeLibrary.dll
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csproj.ResolveComReference.cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\PostSharp.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\PostSharp.xml

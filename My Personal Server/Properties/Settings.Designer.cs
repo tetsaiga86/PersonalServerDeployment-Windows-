@@ -81,5 +81,41 @@ namespace My_Personal_Server.Properties {
                 this["clear_logs_checBox"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool startServerChkBx {
+            get {
+                return ((bool)(this["startServerChkBx"]));
+            }
+            set {
+                this["startServerChkBx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool startMinChkBx {
+            get {
+                return ((bool)(this["startMinChkBx"]));
+            }
+            set {
+                this["startMinChkBx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"\"")]
+        public string node {
+            get {
+                return ((string)(this["node"]));
+            }
+            set {
+                this["node"] = value;
+            }
+        }
     }
 }

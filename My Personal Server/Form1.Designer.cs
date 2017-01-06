@@ -38,11 +38,15 @@
             this.startButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.clearLogsCheckBox = new System.Windows.Forms.CheckBox();
+            this.startServerChkBx = new System.Windows.Forms.CheckBox();
+            this.startMinChkBx = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.rootTextBox = new System.Windows.Forms.TextBox();
+            this.nodeFileTextBox = new System.Windows.Forms.TextBox();
             this.portTextBox = new System.Windows.Forms.TextBox();
             this.logTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,11 +54,13 @@
             this.applyButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.folderButton = new System.Windows.Forms.Button();
+            this.fileButton = new System.Windows.Forms.Button();
             this.clearLogBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.startCheckBox = new System.Windows.Forms.CheckBox();
             this.minimizeCheckBox = new System.Windows.Forms.CheckBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -97,7 +103,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(854, 334);
             this.tableLayoutPanel2.TabIndex = 1;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // flowLayoutPanel6
             // 
@@ -135,9 +140,12 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label3);
+            this.flowLayoutPanel1.Controls.Add(this.label6);
             this.flowLayoutPanel1.Controls.Add(this.label4);
             this.flowLayoutPanel1.Controls.Add(this.label5);
             this.flowLayoutPanel1.Controls.Add(this.clearLogsCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.startServerChkBx);
+            this.flowLayoutPanel1.Controls.Add(this.startMinChkBx);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(188, 257);
@@ -148,23 +156,32 @@
             this.label3.Location = new System.Drawing.Point(5, 5);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 28);
+            this.label3.Size = new System.Drawing.Size(181, 26);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Root directory: ";
+            this.label3.Text = "Root Directory: ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(3, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(183, 26);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Node File:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(3, 33);
+            this.label4.Location = new System.Drawing.Point(3, 57);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 31);
+            this.label4.Size = new System.Drawing.Size(183, 26);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Port number:";
+            this.label4.Text = "Port Number:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(3, 64);
+            this.label5.Location = new System.Drawing.Point(3, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(183, 36);
             this.label5.TabIndex = 2;
@@ -173,17 +190,39 @@
             // 
             // clearLogsCheckBox
             // 
-            this.clearLogsCheckBox.Location = new System.Drawing.Point(3, 235);
-            this.clearLogsCheckBox.Margin = new System.Windows.Forms.Padding(3, 135, 3, 3);
+            this.clearLogsCheckBox.Location = new System.Drawing.Point(3, 174);
+            this.clearLogsCheckBox.Margin = new System.Windows.Forms.Padding(3, 55, 3, 3);
             this.clearLogsCheckBox.Name = "clearLogsCheckBox";
             this.clearLogsCheckBox.Size = new System.Drawing.Size(183, 24);
             this.clearLogsCheckBox.TabIndex = 5;
             this.clearLogsCheckBox.Text = "Clear logs on restart";
             this.clearLogsCheckBox.UseVisualStyleBackColor = true;
+            this.clearLogsCheckBox.CheckedChanged += new System.EventHandler(this.clearLogsCheckBox_CheckedChanged);
+            // 
+            // startServerChkBx
+            // 
+            this.startServerChkBx.Location = new System.Drawing.Point(3, 204);
+            this.startServerChkBx.Name = "startServerChkBx";
+            this.startServerChkBx.Size = new System.Drawing.Size(183, 24);
+            this.startServerChkBx.TabIndex = 7;
+            this.startServerChkBx.Text = "Autostart Server";
+            this.startServerChkBx.UseVisualStyleBackColor = true;
+            this.startServerChkBx.CheckedChanged += new System.EventHandler(this.startServerChkBx_CheckedChanged);
+            // 
+            // startMinChkBx
+            // 
+            this.startMinChkBx.Location = new System.Drawing.Point(3, 234);
+            this.startMinChkBx.Name = "startMinChkBx";
+            this.startMinChkBx.Size = new System.Drawing.Size(183, 24);
+            this.startMinChkBx.TabIndex = 8;
+            this.startMinChkBx.Text = "Start in Tray";
+            this.startMinChkBx.UseVisualStyleBackColor = true;
+            this.startMinChkBx.CheckedChanged += new System.EventHandler(this.startMinChkBx_CheckedChanged);
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.rootTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.nodeFileTextBox);
             this.flowLayoutPanel2.Controls.Add(this.portTextBox);
             this.flowLayoutPanel2.Controls.Add(this.logTextBox);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(197, 3);
@@ -197,22 +236,32 @@
             this.rootTextBox.Name = "rootTextBox";
             this.rootTextBox.Size = new System.Drawing.Size(406, 26);
             this.rootTextBox.TabIndex = 0;
+            this.rootTextBox.TextChanged += new System.EventHandler(this.rootTextBox_TextChanged);
+            // 
+            // nodeFileTextBox
+            // 
+            this.nodeFileTextBox.Location = new System.Drawing.Point(3, 35);
+            this.nodeFileTextBox.Name = "nodeFileTextBox";
+            this.nodeFileTextBox.Size = new System.Drawing.Size(406, 26);
+            this.nodeFileTextBox.TabIndex = 10;
+            this.nodeFileTextBox.TextChanged += new System.EventHandler(this.nodeFileTextBox_TextChanged);
             // 
             // portTextBox
             // 
-            this.portTextBox.Location = new System.Drawing.Point(3, 35);
+            this.portTextBox.Location = new System.Drawing.Point(3, 67);
             this.portTextBox.Name = "portTextBox";
             this.portTextBox.Size = new System.Drawing.Size(406, 26);
             this.portTextBox.TabIndex = 1;
+            this.portTextBox.TextChanged += new System.EventHandler(this.portTextBox_TextChanged);
             // 
             // logTextBox
             // 
-            this.logTextBox.Location = new System.Drawing.Point(3, 67);
+            this.logTextBox.Location = new System.Drawing.Point(3, 99);
             this.logTextBox.Multiline = true;
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.logTextBox.Size = new System.Drawing.Size(406, 190);
+            this.logTextBox.Size = new System.Drawing.Size(406, 157);
             this.logTextBox.TabIndex = 9;
             // 
             // flowLayoutPanel4
@@ -226,6 +275,7 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.Enabled = false;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Location = new System.Drawing.Point(3, 3);
             this.cancelButton.Name = "cancelButton";
@@ -237,6 +287,7 @@
             // 
             // applyButton
             // 
+            this.applyButton.Enabled = false;
             this.applyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applyButton.Location = new System.Drawing.Point(122, 3);
             this.applyButton.Name = "applyButton";
@@ -249,6 +300,7 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.folderButton);
+            this.flowLayoutPanel3.Controls.Add(this.fileButton);
             this.flowLayoutPanel3.Controls.Add(this.clearLogBtn);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(672, 3);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(63, 3, 3, 3);
@@ -258,7 +310,8 @@
             // 
             // folderButton
             // 
-            this.folderButton.Location = new System.Drawing.Point(3, 3);
+            this.folderButton.Location = new System.Drawing.Point(3, 0);
+            this.folderButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.folderButton.Name = "folderButton";
             this.folderButton.Size = new System.Drawing.Size(113, 26);
             this.folderButton.TabIndex = 2;
@@ -266,12 +319,23 @@
             this.folderButton.UseVisualStyleBackColor = true;
             this.folderButton.Click += new System.EventHandler(this.folderButton_Click);
             // 
+            // fileButton
+            // 
+            this.fileButton.Location = new System.Drawing.Point(3, 26);
+            this.fileButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.fileButton.Name = "fileButton";
+            this.fileButton.Size = new System.Drawing.Size(113, 26);
+            this.fileButton.TabIndex = 4;
+            this.fileButton.Text = "...";
+            this.fileButton.UseVisualStyleBackColor = true;
+            this.fileButton.Click += new System.EventHandler(this.fileButton_Click);
+            // 
             // clearLogBtn
             // 
             this.clearLogBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.clearLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearLogBtn.Location = new System.Drawing.Point(3, 182);
-            this.clearLogBtn.Margin = new System.Windows.Forms.Padding(3, 150, 3, 3);
+            this.clearLogBtn.Location = new System.Drawing.Point(3, 175);
+            this.clearLogBtn.Margin = new System.Windows.Forms.Padding(3, 120, 3, 3);
             this.clearLogBtn.Name = "clearLogBtn";
             this.clearLogBtn.Size = new System.Drawing.Size(113, 74);
             this.clearLogBtn.TabIndex = 3;
@@ -310,6 +374,7 @@
             this.minimizeCheckBox.TabIndex = 4;
             this.minimizeCheckBox.Text = "Close minimizes to tray";
             this.minimizeCheckBox.UseVisualStyleBackColor = true;
+            this.minimizeCheckBox.CheckedChanged += new System.EventHandler(this.minimizeCheckBox_CheckedChanged);
             // 
             // notifyIcon
             // 
@@ -318,6 +383,11 @@
             this.notifyIcon.BalloonTipTitle = "My Personal Server";
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Node (*.exe)|*.exe|All files (*.*)|*.*";
+            this.openFileDialog.InitialDirectory = "C:/";
             // 
             // Form1
             // 
@@ -377,6 +447,12 @@
         private System.Windows.Forms.CheckBox clearLogsCheckBox;
         private System.Windows.Forms.Button clearLogBtn;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.CheckBox startServerChkBx;
+        private System.Windows.Forms.CheckBox startMinChkBx;
+        private System.Windows.Forms.TextBox nodeFileTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button fileButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

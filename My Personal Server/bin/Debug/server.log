@@ -1,2 +1,13 @@
-1/5/2017, 13:27:49: The server is running on port 3000
-1/5/2017, 13:30:57: The server is running on port 3000
+1/5/2017, 18:47:23: The server is running on port 3000
+1/5/2017, 18:47:42: download test/Sample.avi
+1/5/2017, 18:47:42: download test/Sample.avi
+1/5/2017, 18:47:43: chunk test/Sample.avi, 34585012-34854427
+1/5/2017, 18:47:43: chunk test/Sample.avi, 9480588-34854427
+1/5/2017, 18:48:10: download test/SampleVideo_1280x720_1mb.mp4
+1/5/2017, 18:48:11: download test/SampleVideo_1280x720_1mb.mp4
+1/5/2017, 18:48:11: chunk test/SampleVideo_1280x720_1mb.mp4, 920435-1055735
+1/5/2017, 18:48:11: download test/SampleVideo_1280x720_1mb.mp4
+1/5/2017, 18:48:11: chunk test/SampleVideo_1280x720_1mb.mp4, 920435-1055735
+1/5/2017, 18:48:11: download test/SampleVideo_1280x720_1mb.mp4
+1/5/2017, 18:49:02: download test/me4.jpg
+1/5/2017, 18:50:00: download test/SampleVideo_1280x720_1mb.mp4
