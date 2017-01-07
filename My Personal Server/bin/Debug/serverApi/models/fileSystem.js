@@ -1,5 +1,5 @@
 const fs = require('fs');
-const root = process.argv[3]+"/";
+const root = process.argv[3] + '/';
 var PromiseEs6 = require('es6-promise').Promise;
 var zipFolder = require('zip-folder');
 var tempfile = require('tempfile');
@@ -58,13 +58,12 @@ var fileSystem = {
           return reject('Item at given path is not a directory.');
         }
         fileNames = filteredFileList(path);
-        resolve(
-          fileNames.map(
-            fileName => {
-              return decorateFile(path + fileName);
-            }
-          )
-        );
+        var fileInfos =  fileNames.map(
+            fileName => decorateFile(path + fileName)
+          ).filter(
+            fileInfo => !!fileInfo
+          );
+        resolve(fileInfos);
       });
     });
   },
@@ -76,8 +75,8 @@ var fileSystem = {
     var zipPath = tempfile('.zip');
     return new PromiseEs6(function(resolve, reject) {
       zipFolder (folderPath, zipPath, function(err) {
-          if (err) {
-              log.info('oh no! ', err, new Date().toJSON());
+        if (err) {
+          log.info('oh no! ', err);
           console.log('oh no!', err);
           reject(err);
         } else {
@@ -86,7 +85,7 @@ var fileSystem = {
             fileSystem.remove(zipPath);
           });
           resolve(stream);
-          log.info(folderPath + ' has been zipped!', new Date().toJSON());
+          log.info(folderPath + ' has been zipped!');
           console.log(folderPath + ' has been zipped!');
         }
       });
@@ -100,11 +99,11 @@ var fileSystem = {
       throw `Destination not writable: ${destination}`;
     }
     fs.rename(newFile.path, destination, function(err){
-        if (err) {
-            log.info(err + ' ', new Date().toJSON());
-            return console.log(err + '');
-        }
-        log.info(newFile.path + ' will be moved to ' + root + dir + ' ', new Date().toJSON());
+      if (err) {
+        log.info(err + ' ');
+        return console.log(err + '');
+      }
+      log.info(newFile.path + ' will be moved to ' + root + dir);
       console.log(newFile.path + ' will be moved to ' + root + dir);
     });
   },
@@ -164,14 +163,14 @@ var fileSystem = {
         stats = decorateFile(path);
         if (!stats.isDir) {
           fs.unlink(path, function (e){
-              if (e) return console.error(e);
-              log.info('the file at ' + path + ' has been deleted' + ' ', new Date().toJSON());
+            if (e) return console.error(e);
+            log.info('the file at ' + path + ' has been deleted');
             return console.log('the file at ' + path + ' has been deleted');
           });
         }else if (stats.childCount < 1) {
           fs.rmdir(path, function (e){
-              if (e) return console.error(e);
-              log.info('the empty folder at ' + path + ' has been deleted' + ' ', new Date().toJSON());
+            if (e) return console.error(e);
+            log.info('the empty folder at ' + path + ' has been deleted');
             return console.log('the empty folder at ' + path + ' has been deleted');
           });
         }else{
@@ -179,14 +178,15 @@ var fileSystem = {
             rmdirRecursive(path, function (e) {
               if (e) return console.error(e);
             });
-            log.info('the folder ' + path + ' and all inner files have been deleted' + ' ', new Date().toJSON());
+            log.info('the folder ' + path + ' and all inner files have been deleted');
             return console.log('the folder ' + path + ' and all inner files have been deleted');
 
           }
         }
       } catch (err) {
-          log.info(err.stack + ' ', new Date().toJSON());
+        log.info(err.stack + ' ');
         console.log(err.stack);
+        throw `An error occured trying to delete: ${path} ${err.stack}`;
       }
     });
   }
@@ -197,14 +197,18 @@ function filteredFileList(path) {
 }
 
 function decorateFile(path) {
-  var fileStats = fs.statSync(path);
-  fileStats.path = path;
-  fileStats.isDir = fileStats.isDirectory();
-  if(fileStats.isDir) fileStats.childCount = filteredFileList(path).length;
-  var splitPath = path.split('/');
-  var length = splitPath.length;
-  fileStats.name = splitPath[length - 1];
-  return fileStats;
+  try{
+    var fileStats = fs.statSync(path);
+    fileStats.path = path;
+    fileStats.isDir = fileStats.isDirectory();
+    if(fileStats.isDir) fileStats.childCount = filteredFileList(path).length;
+    var splitPath = path.split('/');
+    var length = splitPath.length;
+    fileStats.name = splitPath[length - 1];
+    return fileStats;
+  } catch (e){
+    log.info(e);
+  }
 }
 
 function rmdirRecursive(path, callback) {

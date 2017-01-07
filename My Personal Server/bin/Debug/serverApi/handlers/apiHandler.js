@@ -14,14 +14,14 @@ var apiHandler = {
       res.json(children);
     })
     .catch(function (error) {
-        log.info(error);
+      log.info(error);
       console.error(error);
     });
   },
 
   handleDownload: function(req, res){
-      console.log('req.params.path= ' + req.params.path);
-      
+    console.log('req.params.path= ' + req.params.path);
+
     var path = fileSystem.sanitizedPath(req.params.path);
     var info = {};
     var reqUrl = url.parse(req.url, true);
@@ -50,7 +50,7 @@ var apiHandler = {
         res.setHeader('Content-Length', info.end - info.start + 1);
         res.writeHead(200);
       } else {
-          log.info('chunk ' + req.params.path, info.start + '-' + info.end);
+        log.info('chunk ' + req.params.path, info.start + '-' + info.end);
         res.setHeader('Content-Range', 'bytes ' + info.start + '-' + info.end + '/' + fileSize);
         res.writeHead(206);
       }
@@ -142,7 +142,7 @@ var apiHandler = {
     try{
       fileSystem.mkDir(path);
       res.writeHead(201);
-      log.info(path + ' folder created')
+      log.info(path + ' folder created');
       res.end('try completed for:\n ' + path + ' folder created');
     }catch(error){
       res.writeHead(500);

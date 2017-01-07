@@ -1,13 +1,46 @@
-1/5/2017, 18:47:23: The server is running on port 3000
-1/5/2017, 18:47:42: download test/Sample.avi
-1/5/2017, 18:47:42: download test/Sample.avi
-1/5/2017, 18:47:43: chunk test/Sample.avi, 34585012-34854427
-1/5/2017, 18:47:43: chunk test/Sample.avi, 9480588-34854427
-1/5/2017, 18:48:10: download test/SampleVideo_1280x720_1mb.mp4
-1/5/2017, 18:48:11: download test/SampleVideo_1280x720_1mb.mp4
-1/5/2017, 18:48:11: chunk test/SampleVideo_1280x720_1mb.mp4, 920435-1055735
-1/5/2017, 18:48:11: download test/SampleVideo_1280x720_1mb.mp4
-1/5/2017, 18:48:11: chunk test/SampleVideo_1280x720_1mb.mp4, 920435-1055735
-1/5/2017, 18:48:11: download test/SampleVideo_1280x720_1mb.mp4
-1/5/2017, 18:49:02: download test/me4.jpg
-1/5/2017, 18:50:00: download test/SampleVideo_1280x720_1mb.mp4
+1/6/2017, 18:31:25: The server is running on port 3000
+1/6/2017, 18:33:15: The server is running on port 3000
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Application Data'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Cookies'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Local Settings'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\My Documents'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\NetHood'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\PrintHood'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Recent'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\SendTo'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Start Menu'
+1/6/2017, 18:33:21: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Templates'
+1/6/2017, 18:33:48: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Documents\My Music'
+1/6/2017, 18:33:48: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Documents\My Pictures'
+1/6/2017, 18:33:48: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Documents\My Videos'
+1/6/2017, 18:38:35: The server is running on port 3000
+1/6/2017, 18:39:06: download Pictures/Go pro lantern/GOPR0013.MP4
+1/6/2017, 18:39:06: download Pictures/Go pro lantern/GOPR0013.MP4
+1/6/2017, 18:39:08: download Pictures/Go pro lantern/GOPR0014.MP4
+1/6/2017, 18:39:08: chunk Pictures/Go pro lantern/GOPR0013.MP4, 21364736-1035809823
+1/6/2017, 18:39:19: chunk Pictures/Go pro lantern/GOPR0013.MP4, 560919530-1035809823
+1/6/2017, 18:39:20: chunk Pictures/Go pro lantern/GOPR0013.MP4, 562413325-1035809823
+1/6/2017, 18:39:20: chunk Pictures/Go pro lantern/GOPR0013.MP4, 561492173-1035809823
+1/6/2017, 18:39:20: chunk Pictures/Go pro lantern/GOPR0013.MP4, 562467821-1035809823
+1/6/2017, 18:39:21: chunk Pictures/Go pro lantern/GOPR0013.MP4, 561736009-1035809823
+1/6/2017, 18:39:21: chunk Pictures/Go pro lantern/GOPR0013.MP4, 563285380-1035809823
+1/6/2017, 18:39:21: chunk Pictures/Go pro lantern/GOPR0013.MP4, 564796581-1035809823
+1/6/2017, 18:39:21: chunk Pictures/Go pro lantern/GOPR0013.MP4, 561799397-1035809823
+1/6/2017, 18:39:22: chunk Pictures/Go pro lantern/GOPR0013.MP4, 569475756-1035809823
+1/6/2017, 18:39:22: chunk Pictures/Go pro lantern/GOPR0013.MP4, 566159186-1035809823
+1/6/2017, 18:40:00: download Pictures/Go pro lantern/GP020019.MP4
+1/6/2017, 18:40:00: download Pictures/Go pro lantern/GP020019.MP4
+1/6/2017, 18:40:05: chunk Pictures/Go pro lantern/GP020019.MP4, 1189548050-3256114126
+1/6/2017, 18:40:05: chunk Pictures/Go pro lantern/GP020019.MP4, 1191013094-3256114126
+1/6/2017, 18:40:05: chunk Pictures/Go pro lantern/GP020019.MP4, 1190019359-3256114126
+1/6/2017, 18:40:05: chunk Pictures/Go pro lantern/GP020019.MP4, 1187202943-3256114126
+1/6/2017, 18:40:06: chunk Pictures/Go pro lantern/GP020019.MP4, 1188603327-3256114126
+1/6/2017, 18:40:06: chunk Pictures/Go pro lantern/GP020019.MP4, 1189815878-3256114126
+1/6/2017, 18:40:06: chunk Pictures/Go pro lantern/GP020019.MP4, 1187641920-3256114126
+1/6/2017, 18:40:22: chunk Pictures/Go pro lantern/GP020019.MP4, 1949878432-3256114126
+1/6/2017, 18:40:22: chunk Pictures/Go pro lantern/GP020019.MP4, 1951369320-3256114126
+1/6/2017, 18:40:22: chunk Pictures/Go pro lantern/GP020019.MP4, 1952540739-3256114126
+1/6/2017, 18:40:22: chunk Pictures/Go pro lantern/GP020019.MP4, 1950202358-3256114126
+1/6/2017, 18:40:22: chunk Pictures/Go pro lantern/GP020019.MP4, 1952611608-3256114126
+1/6/2017, 18:40:22: chunk Pictures/Go pro lantern/GP020019.MP4, 1953673623-3256114126
+1/6/2017, 18:40:23: chunk Pictures/Go pro lantern/GP020019.MP4, 1951683537-3256114126
