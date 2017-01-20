@@ -30,3 +30,5 @@
 1/6/2017, 17:26:14: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\SendTo'
 1/6/2017, 17:26:14: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Start Menu'
 1/6/2017, 17:26:14: Error: EPERM: operation not permitted, scandir 'C:\Users\Kyle\Templates'
+1/17/2017, 17:56:08: The server is running on port 3000
+1/17/2017, 20:47:52: The server is running on port 3000

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
+using Org.BouncyCastle.X509;
 
 namespace My_Personal_Server
 {
@@ -72,7 +73,7 @@ namespace My_Personal_Server
         {
             System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
             psi.UseShellExecute = false;
-            psi.CreateNoWindow = true;
+            psi.CreateNoWindow = false;
             psi.FileName = nodeFileTextBox.Text;
             psi.Arguments = @"./serverApi/index.js " + portTextBox.Text + " " + rootTextBox.Text.Replace('\\','/');
             try
@@ -334,6 +335,13 @@ namespace My_Personal_Server
         private void nodeFileTextBox_TextChanged(object sender, EventArgs e)
         {
             toggleApplyCancelBtns(true);
+        }
+
+        private void createCertBtn_Click(object sender, EventArgs e)
+        {
+            var CACertificate = CertGen.GenerateCACertificate("CN=root ca");
+            var SelfSignedCertificate = CertGen.GenerateSelfSignedCertificate("CN=127.0.01", "CN=root ca", CACertificate.Private);
+            CertGen.SaveCertAsFile(SelfSignedCertificate);
         }
     }
 }

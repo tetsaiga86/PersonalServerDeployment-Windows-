@@ -61,6 +61,7 @@
             this.minimizeCheckBox = new System.Windows.Forms.CheckBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.createCertBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -302,6 +303,7 @@
             this.flowLayoutPanel3.Controls.Add(this.folderButton);
             this.flowLayoutPanel3.Controls.Add(this.fileButton);
             this.flowLayoutPanel3.Controls.Add(this.clearLogBtn);
+            this.flowLayoutPanel3.Controls.Add(this.createCertBtn);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(672, 3);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(63, 3, 3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -334,8 +336,8 @@
             // 
             this.clearLogBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.clearLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearLogBtn.Location = new System.Drawing.Point(3, 175);
-            this.clearLogBtn.Margin = new System.Windows.Forms.Padding(3, 120, 3, 3);
+            this.clearLogBtn.Location = new System.Drawing.Point(3, 57);
+            this.clearLogBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
             this.clearLogBtn.Name = "clearLogBtn";
             this.clearLogBtn.Size = new System.Drawing.Size(113, 74);
             this.clearLogBtn.TabIndex = 3;
@@ -388,6 +390,19 @@
             // 
             this.openFileDialog.Filter = "Node (*.exe)|*.exe|All files (*.*)|*.*";
             this.openFileDialog.InitialDirectory = "C:/";
+            // 
+            // createCertBtn
+            // 
+            this.createCertBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.createCertBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createCertBtn.Location = new System.Drawing.Point(3, 136);
+            this.createCertBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
+            this.createCertBtn.Name = "createCertBtn";
+            this.createCertBtn.Size = new System.Drawing.Size(113, 74);
+            this.createCertBtn.TabIndex = 5;
+            this.createCertBtn.Text = "Create Cert";
+            this.createCertBtn.UseVisualStyleBackColor = true;
+            this.createCertBtn.Click += new System.EventHandler(this.createCertBtn_Click);
             // 
             // Form1
             // 
@@ -453,6 +468,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button fileButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button createCertBtn;
     }
 }
 
