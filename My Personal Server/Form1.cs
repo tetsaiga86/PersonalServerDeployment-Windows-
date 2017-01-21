@@ -73,7 +73,7 @@ namespace My_Personal_Server
         {
             System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
             psi.UseShellExecute = false;
-            psi.CreateNoWindow = false;
+            psi.CreateNoWindow = true;
             psi.FileName = nodeFileTextBox.Text;
             psi.Arguments = @"./serverApi/index.js " + portTextBox.Text + " " + rootTextBox.Text.Replace('\\','/');
             try
@@ -340,8 +340,10 @@ namespace My_Personal_Server
         private void createCertBtn_Click(object sender, EventArgs e)
         {
             var CACertificate = CertGen.GenerateCACertificate("CN=root ca");
-            var SelfSignedCertificate = CertGen.GenerateSelfSignedCertificate("CN=127.0.01", "CN=root ca", CACertificate.Private);
-            CertGen.SaveCertAsFile(SelfSignedCertificate);
+            var SelfSignedCertificate = CertGen.GenerateSelfSignedCertificate("CN=192.168.0.23", "CN=root ca", CACertificate.Private);
+            CertGen.SaveCertAsFile(SelfSignedCertificate, "server");
+            
+            CertGen.addCertToStore(SelfSignedCertificate, System.Security.Cryptography.X509Certificates.StoreName.My, System.Security.Cryptography.X509Certificates.StoreLocation.CurrentUser);
         }
     }
 }

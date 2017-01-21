@@ -1,0 +1,20 @@
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\My Personal Server.exe.config
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My Personal Server.csproj.ResolveComReference.cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\serverApi\handlers\apiHandler.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\serverApi\index.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\serverApi\logger\logger.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\serverApi\models\fileSystem.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\serverApi\routers\apiRouter.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\serverApi\package.json
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\My Personal Server.exe
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\My Personal Server.pdb
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\PostSharp.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Release\PostSharp.xml
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My Personal Server.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My_Personal_Server.Form1.resources
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My_Personal_Server.Properties.Resources.resources
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My Personal Server.csproj.GenerateResource.Cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My Personal Server.exe
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Release\My Personal Server.pdb

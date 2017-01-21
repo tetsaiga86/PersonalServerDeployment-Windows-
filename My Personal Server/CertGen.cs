@@ -94,6 +94,25 @@ namespace My_Personal_Server
 
         }
 
+        public static bool addCertToStore(System.Security.Cryptography.X509Certificates.X509Certificate2 cert, System.Security.Cryptography.X509Certificates.StoreName st, System.Security.Cryptography.X509Certificates.StoreLocation sl)
+        {
+            bool bRet = false;
+
+            try
+            {
+                X509Store store = new X509Store(st, sl);
+                store.Open(OpenFlags.ReadWrite);
+                store.Add(cert);
+
+                store.Close();
+            }
+            catch
+            {
+
+            }
+
+            return bRet;
+        }
 
         public static AsymmetricCipherKeyPair GenerateCACertificate(string subjectName, 
             int keyStrength = 2048)
@@ -141,16 +160,17 @@ namespace My_Personal_Server
             // selfsign certificate
             var certificate = certificateGenerator.Generate(issuerKeyPair.Private, random);
             var x509 = new System.Security.Cryptography.X509Certificates.X509Certificate2(certificate.GetEncoded());
-            // Add CA certificate to Root store
-            //addCertToStore(cert, StoreName.Root, StoreLocation.CurrentUser);
+            //Add CA certificate to Root store
+            addCertToStore(x509, StoreName.Root, StoreLocation.CurrentUser);
+            SaveCertAsFile(x509, "ca");
             return issuerKeyPair;
 
         }
 
-        public static void SaveCertAsFile(X509Certificate2 certificate)
+        public static void SaveCertAsFile(X509Certificate2 certificate, String filename)
         {
-            var byteArray = certificate.Export(X509ContentType.Pkcs12);
-            File.WriteAllBytes("./serverApi/server.pfx", byteArray);
+            var byteArray = certificate.Export(X509ContentType.Pkcs12, "password");
+            File.WriteAllBytes("./serverApi/" + filename + ".pfx", byteArray);
         }
     }
 }
