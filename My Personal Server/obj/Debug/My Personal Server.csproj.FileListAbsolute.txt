@@ -17,3 +17,6 @@ C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Person
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csproj.ResolveComReference.cache
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\PostSharp.dll
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\PostSharp.xml
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\ngrok\ngrok.exe
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\Newtonsoft.Json.xml

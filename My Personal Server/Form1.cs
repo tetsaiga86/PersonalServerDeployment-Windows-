@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
+using System.Net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace My_Personal_Server
 {
@@ -16,6 +19,7 @@ namespace My_Personal_Server
     {
         long counter;
         System.Diagnostics.Process mProcess;
+        System.Diagnostics.Process mNgrokProcess;
         public Form1()
         {
             InitializeComponent();
@@ -70,22 +74,40 @@ namespace My_Personal_Server
 
         private void startStopServer(Boolean start)
         {
+            //Node Server
             System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
             psi.FileName = nodeFileTextBox.Text;
             psi.Arguments = @"./serverApi/index.js " + portTextBox.Text + " " + rootTextBox.Text.Replace('\\','/');
+
+            //Ngrok
+            System.Diagnostics.ProcessStartInfo ngrok = new System.Diagnostics.ProcessStartInfo();
+            ngrok.UseShellExecute = false;
+            ngrok.CreateNoWindow = false;
+            ngrok.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            
+            ngrok.FileName = @"./ngrok/ngrok.exe";
+            ngrok.Arguments = "http -bind-tls=true -auth=\"" + 
+                Properties.Settings.Default.username + ":" + 
+                Properties.Settings.Default.password + "\" " + 
+                portTextBox.Text;
             try
             {
                 if (start)
                 {
                     mProcess = System.Diagnostics.Process.Start(psi);
                     notifyIcon.BalloonTipText = "Server running on port: " + portTextBox.Text;
+                    mNgrokProcess = System.Diagnostics.Process.Start(ngrok);
                     switchBtns();
+                    MessageBox.Show(getNgrokHost(), "Your current server URL is: ");
+                    
                 }
                 else
                 {
-                    mProcess.Kill();
+                    if (!mNgrokProcess.HasExited) mNgrokProcess.Kill();
+                    if (!mProcess.HasExited) mProcess.Kill();
+
                     notifyIcon.BalloonTipText = "Server stopped";
                     switchBtns();
                 }
@@ -334,6 +356,59 @@ namespace My_Personal_Server
         private void nodeFileTextBox_TextChanged(object sender, EventArgs e)
         {
             toggleApplyCancelBtns(true);
+        }
+
+        private void ngrokBtn_Click(object sender, EventArgs e)
+        {
+            String username = Properties.Settings.Default.username;
+            String password = Properties.Settings.Default.password;
+            if (InputBox.inputBox("Enter Username & Password: ", "Username: ", ref username, ref password) == DialogResult.OK)
+            {
+                Console.Write(username, password);
+                Properties.Settings.Default.username = username;
+                Properties.Settings.Default.password = password;
+                Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private String getNgrokHost()
+        {
+            String jsonResponseString;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:4040/api/tunnels");
+            request.Accept = "application/json";
+            request.ContentType = "application/json";
+            
+            try
+            {
+                WebResponse response = request.GetResponse();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+                    jsonResponseString = reader.ReadToEnd();
+                    Console.Write(jsonResponseString);
+                }
+            }
+            catch (WebException ex)
+            {
+                WebResponse errorResponse = ex.Response;
+                using (Stream responseStream = errorResponse.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
+                    String errorText = reader.ReadToEnd();
+                    Console.Write(errorText);
+                }
+                throw;
+            }
+
+            var responseObject = JObject.Parse(jsonResponseString);
+            var tunnels = responseObject.Value<JArray>("tunnels");
+            if (tunnels.Count == 0)
+            {
+                return getNgrokHost();
+            }
+            var tunnel = tunnels.Value<JObject>(0);
+            return tunnel.Value<String>("public_url");
         }
     }
 }
