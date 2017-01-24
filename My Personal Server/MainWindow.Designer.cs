@@ -1,6 +1,6 @@
 ﻿namespace My_Personal_Server
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.label2 = new System.Windows.Forms.Label();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,12 +56,12 @@
             this.folderButton = new System.Windows.Forms.Button();
             this.fileButton = new System.Windows.Forms.Button();
             this.clearLogBtn = new System.Windows.Forms.Button();
+            this.ngrokBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.startCheckBox = new System.Windows.Forms.CheckBox();
             this.minimizeCheckBox = new System.Windows.Forms.CheckBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.ngrokBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -345,6 +345,19 @@
             this.clearLogBtn.UseVisualStyleBackColor = true;
             this.clearLogBtn.Click += new System.EventHandler(this.clearLogBtn_Click);
             // 
+            // ngrokBtn
+            // 
+            this.ngrokBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ngrokBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ngrokBtn.Location = new System.Drawing.Point(3, 172);
+            this.ngrokBtn.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.ngrokBtn.Name = "ngrokBtn";
+            this.ngrokBtn.Size = new System.Drawing.Size(113, 74);
+            this.ngrokBtn.TabIndex = 5;
+            this.ngrokBtn.Text = "Config";
+            this.ngrokBtn.UseVisualStyleBackColor = true;
+            this.ngrokBtn.Click += new System.EventHandler(this.ngrokBtn_Click);
+            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.startCheckBox);
@@ -390,19 +403,6 @@
             // 
             this.openFileDialog.Filter = "Node (*.exe)|*.exe|All files (*.*)|*.*";
             this.openFileDialog.InitialDirectory = "C:/";
-            // 
-            // ngrokBtn
-            // 
-            this.ngrokBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ngrokBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ngrokBtn.Location = new System.Drawing.Point(3, 172);
-            this.ngrokBtn.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.ngrokBtn.Name = "ngrokBtn";
-            this.ngrokBtn.Size = new System.Drawing.Size(113, 74);
-            this.ngrokBtn.TabIndex = 5;
-            this.ngrokBtn.Text = "Config";
-            this.ngrokBtn.UseVisualStyleBackColor = true;
-            this.ngrokBtn.Click += new System.EventHandler(this.ngrokBtn_Click);
             // 
             // Form1
             // 

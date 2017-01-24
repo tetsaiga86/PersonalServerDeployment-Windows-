@@ -12,15 +12,16 @@ using IWshRuntimeLibrary;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 
 namespace My_Personal_Server
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         long counter;
         System.Diagnostics.Process mProcess;
         System.Diagnostics.Process mNgrokProcess;
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             counter = 0;
@@ -83,10 +84,9 @@ namespace My_Personal_Server
 
             //Ngrok
             System.Diagnostics.ProcessStartInfo ngrok = new System.Diagnostics.ProcessStartInfo();
+            ngrok.RedirectStandardOutput = true;
             ngrok.UseShellExecute = false;
-            ngrok.CreateNoWindow = false;
-            ngrok.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            
+            ngrok.CreateNoWindow = true;
             ngrok.FileName = @"./ngrok/ngrok.exe";
             ngrok.Arguments = "http -bind-tls=true -auth=\"" + 
                 Properties.Settings.Default.username + ":" + 
@@ -100,8 +100,12 @@ namespace My_Personal_Server
                     notifyIcon.BalloonTipText = "Server running on port: " + portTextBox.Text;
                     mNgrokProcess = System.Diagnostics.Process.Start(ngrok);
                     switchBtns();
-                    MessageBox.Show(getNgrokHost(), "Your current server URL is: ");
-                    
+                    //MessageBox.Show(getNgrokHost(), "Your current server URL is: ");
+                    QrForm qrForm = new QrForm(getNgrokHost(), 
+                        Properties.Settings.Default.username, 
+                        Properties.Settings.Default.password);
+                    qrForm.Show();
+                    Clipboard.SetText(getNgrokHost());
                 }
                 else
                 {
@@ -124,12 +128,14 @@ namespace My_Personal_Server
             if (startButton.Enabled)
             {
                 startButton.Enabled = false;
+                ngrokBtn.Enabled = false;
                 stopButton.Enabled = true;
             }
             else
             {
                 startButton.Enabled = true;
                 stopButton.Enabled = false;
+                ngrokBtn.Enabled = true;
             }
         }
 
@@ -386,7 +392,6 @@ namespace My_Personal_Server
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     jsonResponseString = reader.ReadToEnd();
-                    Console.Write(jsonResponseString);
                 }
             }
             catch (WebException ex)
