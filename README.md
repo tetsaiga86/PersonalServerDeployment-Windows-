@@ -27,13 +27,13 @@ Now you can start the android client and login using the QR code.
 - Server forwarded through ngrok
 - Api does not allow a client to access directories outside of the root folder (For example if the selected root is C:\Users\USERNAME\Music, the client will not have access to the C:\ drive)
 - The Server API is set up to:
-* List all files and directories inside the root (except hidden/protected files)
-..* transfer files to client
-..* Zip and transfer directories to client
-..* rename files and folders
-..* delete files and folders
-..* transfer files from client to server root
-..* replace a currently existing file with a newer version
+ * List all files and directories inside the root (except hidden/protected files)
+ * transfer files to client
+ * Zip and transfer directories to client
+ * rename files and folders
+ * delete files and folders
+ * transfer files from client to server root
+ * replace a currently existing file with a newer version
 
 ## Known issues:
 
