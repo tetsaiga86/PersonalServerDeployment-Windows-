@@ -2,8 +2,24 @@ c:\users\kyle\documents\visual studio 2015\Projects\My Personal Server\My Person
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\My Personal Server.exe
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\My Personal Server.pdb
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csprojResolveAssemblyReference.cache
-C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My_Personal_Server.Form1.resources
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My_Personal_Server.Properties.Resources.resources
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csproj.GenerateResource.Cache
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.exe
 C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.pdb
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\index.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\handlers\apiHandler.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\models\fileSystem.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\routers\apiRouter.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\package.json
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\serverApi\logger\logger.js
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My Personal Server.csproj.ResolveComReference.cache
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\PostSharp.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\PostSharp.xml
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\ngrok\ngrok.exe
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\QRCoder.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\bin\Debug\UnityEngine.dll
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My_Personal_Server.MainWindow.resources
+C:\Users\Kyle\documents\visual studio 2015\Projects\My Personal Server\My Personal Server\obj\Debug\My_Personal_Server.QrForm.resources
