@@ -5,7 +5,7 @@ This is a c# form for deploying an express server over https. It uses node to cr
 
 ## Directions For Setup:
 The server and client have been set up with the end-user's ease of use in mind.
-- Download the latest version, found here: .....
+- Download the latest version, found here: https://docs.google.com/uc?id=0B03BKOm7R9exdVg5UmhZWm1DTFk&export=download
 - Unzip to where you would like to install the server
 - Install the included node.msi for your system
 - Open My Personal Server.exe (found inside the Personal Server server folder)
