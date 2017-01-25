@@ -26,6 +26,10 @@ Now you can start the android client and login using the QR code.
 - Runs using express
 - Server forwarded through ngrok
 - Api does not allow a client to access directories outside of the root folder (For example if the selected root is C:\Users\USERNAME\Music, the client will not have access to the C:\ drive)
+- Autostart with windows
+- Start in taskbar tray
+- Autostart Server
+- Logs server events in log file and displays them in textbox on windows form
 - The Server API is set up to:
  * List all files and directories inside the root (except hidden/protected files)
  * transfer files to client
@@ -36,8 +40,8 @@ Now you can start the android client and login using the QR code.
  * replace a currently existing file with a newer version
 
 ## Known issues:
+- Uploading from client to server is not yet implemented on client app
 
 ## Coming Soon
-
 More coming soon!
  
