@@ -11,6 +11,33 @@ The server and client have been set up with the end-user's ease of use in mind.
 - Open My Personal Server.exe (found inside the Personal Server server folder)
 - Select the directory that will serve as the root of your server
 -- Please note that the client will not read hidden directories or files
+- Select the node.exe file that was previously installed
+- Select the port number (default: 3000)
+- Click config and type in your username and password (default is Admin:password)
+- Toggle any of the Checkbox options to suit your needs
+- Click Apply 
+- Click Start
+
+If everything is working, the log field should display that the server has started and a QR code should appear on your screen.
+Now you can start the android client and login using the QR code.
+
+## Features:
+- Server is HTTP service
+- Runs using express
+- Server forwarded through ngrok
+- Api does not allow a client to access directories outside of the root folder (For example if the selected root is C:\Users\USERNAME\Music, the client will not have access to the C:\ drive)
+- The Server API is set up to:
+..* List all files and directories inside the root (except hidden/protected files)
+..* transfer files to client
+..* Zip and transfer directories to client
+..* rename files and folders
+..* delete files and folders
+..* transfer files from client to server root
+..* replace a currently existing file with a newer version
+
+## Known issues:
+
+## Coming Soon
 
 More coming soon!
  
